@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Moroccan Leadership Seminar - Hiba Jana</title>
+  <link href="https://fonts.googleapis.com/css2?family=Share+Tech+Mono&family=Rajdhani:wght@400;500;600;700&family=Exo+2:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg-0: #050A0E;
+      --bg-1: #0A1520;
+      --green: #00D4AA;
+      --blue: #0EA5E9;
+      --text-primary: #E2EDF5;
+      --text-secondary: #7A9BB5;
+      --text-muted: #3A5468;
+      --border-dim: rgba(255,255,255,0.06);
+      --font-mono: 'Share Tech Mono', monospace;
+      --font-display: 'Rajdhani', sans-serif;
+      --font-body: 'Exo 2', sans-serif;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      background: var(--bg-0);
+      color: var(--text-primary);
+      font-family: var(--font-body);
+      padding: 2rem;
+      line-height: 1.6;
+    }
+    .container { max-width: 1200px; margin: 0 auto; }
+    .back-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      font-family: var(--font-mono);
+      font-size: 0.8rem;
+      letter-spacing: 0.1em;
+      color: var(--blue);
+      text-transform: uppercase;
+      margin-bottom: 2rem;
+      text-decoration: none;
+      transition: gap 0.2s;
+    }
+    .back-btn:hover { gap: 0.8rem; }
+    h1 {
+      font-family: var(--font-display);
+      font-size: clamp(2rem, 5vw, 3.5rem);
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.04em;
+      margin-bottom: 0.5rem;
+      color: var(--blue);
+    }
+    .meta {
+      font-family: var(--font-mono);
+      font-size: 0.75rem;
+      letter-spacing: 0.1em;
+      color: var(--text-muted);
+      text-transform: uppercase;
+      margin-bottom: 2rem;
+    }
+    .description {
+      font-size: 1.1rem;
+      color: var(--text-secondary);
+      margin-bottom: 3rem;
+      max-width: 800px;
+      line-height: 1.8;
+    }
+    .featured-image {
+      background: var(--bg-1);
+      border: 1px solid var(--border-dim);
+      border-radius: 8px;
+      overflow: hidden;
+      margin-bottom: 3rem;
+      cursor: pointer;
+      transition: transform 0.3s, border-color 0.3s;
+    }
+    .featured-image:hover {
+      transform: translateY(-4px);
+      border-color: rgba(14,165,233,0.3);
+    }
+    .featured-image img {
+      width: 100%;
+      height: auto;
+      display: block;
+    }
+    
+    /* Lightbox */
+    .lightbox {
+      display: none;
+      position: fixed;
+      inset: 0;
+      background: rgba(5,10,14,0.95);
+      z-index: 1000;
+      align-items: center;
+      justify-content: center;
+      padding: 2rem;
+    }
+    .lightbox.active { display: flex; }
+    .lightbox img {
+      max-width: 90%;
+      max-height: 90%;
+      border-radius: 8px;
+      border: 1px solid var(--border-dim);
+    }
+    .lightbox-close {
+      position: absolute;
+      top: 2rem;
+      right: 2rem;
+      font-size: 2rem;
+      color: var(--blue);
+      cursor: pointer;
+      font-family: var(--font-mono);
+    }
+    @media (max-width: 640px) {
+      body { padding: 1rem; }
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <a href="../index.html#volunteering" class="back-btn">← Back to Portfolio</a>
+    
+    <h1>Moroccan Leadership Seminar</h1>
+    <div class="meta">MLS Marrakech · Participant</div>
+    
+    <p class="description">
+      Participated in the Moroccan Leadership Seminar (MLS) in Marrakech, a comprehensive leadership development program focused on building essential skills in teamwork, communication, project management, and social impact. The program brought together motivated students and young professionals to develop leadership capabilities and create positive change in our communities.
+    </p>
+
+    <div class="featured-image" onclick="openLightbox()">
+      <img src="../images/volunteering/Mls_team.png.PNG" alt="MLS Marrakech Team">
+    </div>
+
+    <div style="background:var(--bg-1);border:1px solid var(--border-dim);border-radius:8px;padding:2rem">
+      <h3 style="font-family:var(--font-display);font-size:1.3rem;text-transform:uppercase;color:var(--blue);margin-bottom:1rem">Program Experience</h3>
+      <ul style="list-style:none;padding:0">
+        <li style="padding:0.5rem 0;font-size:0.95rem;color:var(--text-secondary);display:flex;gap:0.75rem">
+          <span style="color:var(--green)">✓</span> Developed leadership and team collaboration skills
+        </li>
+        <li style="padding:0.5rem 0;font-size:0.95rem;color:var(--text-secondary);display:flex;gap:0.75rem">
+          <span style="color:var(--green)">✓</span> Participated in workshops on communication and project management
+        </li>
+        <li style="padding:0.5rem 0;font-size:0.95rem;color:var(--text-secondary);display:flex;gap:0.75rem">
+          <span style="color:var(--green)">✓</span> Collaborated with diverse group of students and professionals
+        </li>
+        <li style="padding:0.5rem 0;font-size:0.95rem;color:var(--text-secondary);display:flex;gap:0.75rem">
+          <span style="color:var(--green)">✓</span> Built lasting network within Marrakech leadership community
+        </li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="lightbox" id="lightbox" onclick="closeLightbox()">
+    <span class="lightbox-close">×</span>
+    <img id="lightbox-img" src="../images/volunteering/Mls_team.png.PNG" alt="Full size">
+  </div>
+
+  <script>
+    function openLightbox() {
+      document.getElementById('lightbox').classList.add('active');
+    }
+    
+    function closeLightbox() {
+      document.getElementById('lightbox').classList.remove('active');
+    }
+  </script>
+</body>
+</html>
