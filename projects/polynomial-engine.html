@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Polynomial Engine - Hiba Jana</title>
+  <link href="https://fonts.googleapis.com/css2?family=Share+Tech+Mono&family=Rajdhani:wght@400;500;600;700&family=Exo+2:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg-0: #050A0E;
+      --bg-1: #0A1520;
+      --green: #00D4AA;
+      --text-primary: #E2EDF5;
+      --text-secondary: #7A9BB5;
+      --text-muted: #3A5468;
+      --border-dim: rgba(255,255,255,0.06);
+      --font-mono: 'Share Tech Mono', monospace;
+      --font-display: 'Rajdhani', sans-serif;
+      --font-body: 'Exo 2', sans-serif;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      background: var(--bg-0);
+      color: var(--text-primary);
+      font-family: var(--font-body);
+      padding: 2rem;
+      line-height: 1.6;
+    }
+    .container { max-width: 1200px; margin: 0 auto; }
+    .back-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      font-family: var(--font-mono);
+      font-size: 0.8rem;
+      letter-spacing: 0.1em;
+      color: var(--green);
+      text-transform: uppercase;
+      margin-bottom: 2rem;
+      text-decoration: none;
+      transition: gap 0.2s;
+    }
+    .back-btn:hover { gap: 0.8rem; }
+    h1 {
+      font-family: var(--font-display);
+      font-size: clamp(2rem, 5vw, 3.5rem);
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.04em;
+      margin-bottom: 0.5rem;
+      color: var(--green);
+    }
+    .meta {
+      font-family: var(--font-mono);
+      font-size: 0.75rem;
+      letter-spacing: 0.1em;
+      color: var(--text-muted);
+      text-transform: uppercase;
+      margin-bottom: 2rem;
+    }
+    .description {
+      font-size: 1.1rem;
+      color: var(--text-secondary);
+      margin-bottom: 3rem;
+      max-width: 800px;
+      line-height: 1.8;
+    }
+    .gallery {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 1.5rem;
+    }
+    .gallery-item {
+      background: var(--bg-1);
+      border: 1px solid var(--border-dim);
+      border-radius: 8px;
+      overflow: hidden;
+      cursor: pointer;
+      transition: transform 0.3s, border-color 0.3s;
+    }
+    .gallery-item:hover {
+      transform: translateY(-4px);
+      border-color: rgba(0,212,170,0.3);
+    }
+    .gallery-item img {
+      width: 100%;
+      height: auto;
+      display: block;
+    }
+    .gallery-item-caption {
+      padding: 1rem;
+      font-family: var(--font-mono);
+      font-size: 0.7rem;
+      color: var(--text-muted);
+      letter-spacing: 0.08em;
+      text-align: center;
+    }
+    /* Lightbox */
+    .lightbox {
+      display: none;
+      position: fixed;
+      inset: 0;
+      background: rgba(5,10,14,0.95);
+      z-index: 1000;
+      align-items: center;
+      justify-content: center;
+      padding: 2rem;
+    }
+    .lightbox.active { display: flex; }
+    .lightbox img {
+      max-width: 90%;
+      max-height: 90%;
+      border-radius: 8px;
+      border: 1px solid var(--border-dim);
+    }
+    .lightbox-close {
+      position: absolute;
+      top: 2rem;
+      right: 2rem;
+      font-size: 2rem;
+      color: var(--green);
+      cursor: pointer;
+      font-family: var(--font-mono);
+    }
+    @media (max-width: 640px) {
+      body { padding: 1rem; }
+      .gallery { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <a href="../index.html#projects" class="back-btn">← Back to Portfolio</a>
+    
+    <h1>Polynomial Engine</h1>
+    <div class="meta">C Language · Data Structures · Algorithms</div>
+    
+    <p class="description">
+      A complete C library for polynomial operations including addition, deletion, summation, multiplication, and derivation. Built with efficient data structures and a fully documented API. Developed in Code::Blocks with comprehensive testing and memory management.
+    </p>
+
+    <div class="gallery">
+      <div class="gallery-item" onclick="openLightbox(0)">
+        <img src="../images/projects/poly1.png" alt="Polynomial Engine Screenshot 1">
+        <div class="gallery-item-caption">Main</div>
+      </div>
+      <div class="gallery-item" onclick="openLightbox(1)">
+        <img src="../images/projects/poly2.png" alt="Polynomial Engine Screenshot 2">
+        <div class="gallery-item-caption">Polynomial.c</div>
+      </div>
+      <div class="gallery-item" onclick="openLightbox(3)">
+        <img src="../images/projects/poly3.png" alt="Polynomial Engine Screenshot 4">
+        <div class="gallery-item-caption">Results Output</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="lightbox" id="lightbox" onclick="closeLightbox()">
+    <span class="lightbox-close">×</span>
+    <img id="lightbox-img" src="" alt="Full size">
+  </div>
+
+  <script>
+    const images = [
+      '../images/projects/poly1.png',
+      '../images/projects/poly2.png',
+      '../images/projects/poly3.png',
+      '../images/projects/polynomial.png'
+    ];
+    
+    function openLightbox(index) {
+      document.getElementById('lightbox-img').src = images[index];
+      document.getElementById('lightbox').classList.add('active');
+    }
+    
+    function closeLightbox() {
+      document.getElementById('lightbox').classList.remove('active');
+    }
+  </script>
+</body>
+</html>
