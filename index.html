@@ -641,8 +641,32 @@
       cursor: pointer;
       transition: border-color 0.3s, color 0.3s;
     }
-    .cert-add:hover { border-color: var(--green); color: var(--green); }
-    .cert-add svg { width: 32px; height: 32px; opacity: 0.5; }
+    
+    #cv { background: var(--bg-1); }
+    .cv-subtitle { font-family: var(--font-mono); font-size: 0.8rem; color: var(--text-muted); letter-spacing: 0.08em; margin-top: 0.6rem; margin-bottom: 0; }
+    .cv-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 2rem; margin-top: 3rem; }
+    .cv-card { background: var(--bg-card); border: 1px solid var(--border-dim); border-radius: 12px; padding: 2.5rem 2rem; display: flex; flex-direction: column; align-items: center; gap: 1.5rem; position: relative; overflow: hidden; transition: border-color 0.3s, transform 0.3s, box-shadow 0.3s; text-align: center; }
+    .cv-card::before { content: ''; position: absolute; top: 0; left: 0; right: 0; height: 2px; transform: scaleX(0); transition: transform 0.4s; transform-origin: left; }
+    .cv-card.en::before { background: linear-gradient(to right, var(--green), var(--blue)); }
+    .cv-card.fr::before { background: linear-gradient(to right, var(--blue), var(--orange)); }
+    .cv-card:hover { transform: translateY(-5px); box-shadow: 0 16px 48px rgba(0,0,0,0.35); }
+    .cv-card.en:hover { border-color: rgba(0,212,170,0.35); }
+    .cv-card.fr:hover { border-color: rgba(14,165,233,0.35); }
+    .cv-card:hover::before { transform: scaleX(1); }
+    .cv-card-icon { width: 66px; height: 66px; border-radius: 14px; display: flex; align-items: center; justify-content: center; font-size: 2rem; }
+    .cv-card.en .cv-card-icon { background: rgba(0,212,170,0.1); border: 1px solid rgba(0,212,170,0.2); }
+    .cv-card.fr .cv-card-icon { background: rgba(14,165,233,0.1); border: 1px solid rgba(14,165,233,0.2); }
+    .cv-card-lang { font-family: var(--font-mono); font-size: 0.65rem; letter-spacing: 0.2em; text-transform: uppercase; margin-bottom: 0.35rem; }
+    .cv-card.en .cv-card-lang { color: var(--green); }
+    .cv-card.fr .cv-card-lang { color: var(--blue); }
+    .cv-card-title { font-family: var(--font-display); font-size: 1.4rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.06em; color: var(--text-primary); margin-bottom: 0.5rem; }
+    .cv-card-desc { font-size: 0.85rem; color: var(--text-secondary); line-height: 1.65; max-width: 280px; }
+    .cv-download-btn { display: inline-flex; align-items: center; gap: 0.6rem; padding: 13px 28px; border-radius: 6px; font-family: var(--font-display); font-size: 0.9rem; font-weight: 600; letter-spacing: 0.08em; text-transform: uppercase; transition: all 0.25s; width: 100%; justify-content: center; cursor: pointer; }
+    .cv-card.en .cv-download-btn { background: var(--green); color: var(--bg-0); border: none; }
+    .cv-card.en .cv-download-btn:hover { background: #00ffcc; box-shadow: 0 0 24px rgba(0,212,170,0.45); transform: translateY(-2px); }
+    .cv-card.fr .cv-download-btn { background: transparent; border: 1.5px solid var(--blue); color: var(--blue); }
+    .cv-card.fr .cv-download-btn:hover { background: rgba(14,165,233,0.12); box-shadow: 0 0 20px rgba(14,165,233,0.2); transform: translateY(-2px); }
+    .cv-meta { font-family: var(--font-mono); font-size: 0.62rem; letter-spacing: 0.1em; color: var(--text-muted); text-transform: uppercase; }
 
     /* ─── VOLUNTEERING ─── */
     #volunteering { background: var(--bg-1); }
@@ -1253,6 +1277,47 @@
   </div>
 </section>
 
+<div class="divider"></div>
+  
+<!-- CV -->
+<section id="cv">
+  <div class="section-label">Resume</div>
+  <h2 class="section-title">MY <em>CV</em></h2>
+  <p class="cv-subtitle">Download my resume in your preferred language</p>
+  <div class="cv-grid">
+
+    <div class="cv-card en reveal">
+      <div class="cv-card-icon">📄</div>
+      <div>
+        <div class="cv-card-lang">English Version</div>
+        <div class="cv-card-title">Curriculum Vitae</div>
+        <div class="cv-card-desc">Full resume with education, experience, skills & certifications — written in English for international applications.</div>
+      </div>
+      <!-- Replace href with actual path: cv/hiba-jana-cv-en.pdf -->
+      <a href="cv/hiba-jana-cv-en.pdf" download class="cv-download-btn">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path><polyline points="7 10 12 15 17 10"></polyline><line x1="12" y1="15" x2="12" y2="3"></line></svg>
+        Download CV — EN
+      </a>
+      <div class="cv-meta">PDF · English · Updated 2026</div>
+    </div>
+
+    <div class="cv-card fr reveal" style="transition-delay:0.15s">
+      <div class="cv-card-icon">📄</div>
+      <div>
+        <div class="cv-card-lang">Version Française</div>
+        <div class="cv-card-title">Curriculum Vitae</div>
+        <div class="cv-card-desc">CV complet incluant formation, expérience, compétences et certifications — rédigé en français pour les candidatures francophones.</div>
+      </div>
+      <!-- Replace href with actual path: cv/hiba-jana-cv-fr.pdf -->
+      <a href="cv/hiba-jana-cv-fr.pdf" download class="cv-download-btn">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path><polyline points="7 10 12 15 17 10"></polyline><line x1="12" y1="15" x2="12" y2="3"></line></svg>
+        Télécharger CV — FR
+      </a>
+      <div class="cv-meta">PDF · Français · Mis à jour 2026</div>
+    </div>
+
+  </div>
+</section>
 <div class="divider"></div>
 
 <!-- ══════════ VOLUNTEERING ══════════ -->
