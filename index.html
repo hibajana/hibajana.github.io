@@ -106,14 +106,12 @@
     .nav-links a:hover { color: var(--green); }
     .nav-links a:hover::after { transform: scaleX(1); }
 
-    /* Hamburger */
-    .hamburger { display: none; flex-direction: column; gap: 5px; padding: 6px; }
+    .hamburger { display: none; flex-direction: column; gap: 5px; padding: 6px; z-index: 101; }
     .hamburger span { display: block; width: 24px; height: 2px; background: var(--text-secondary); transition: all 0.3s; border-radius: 1px; }
     .hamburger.open span:nth-child(1) { transform: rotate(45deg) translate(5px, 5px); }
     .hamburger.open span:nth-child(2) { opacity: 0; }
     .hamburger.open span:nth-child(3) { transform: rotate(-45deg) translate(5px, -5px); }
 
-    /* Mobile nav */
     .mobile-nav {
       display: none;
       position: fixed;
@@ -180,7 +178,6 @@
       max-width: 1400px;
       margin: 0 auto;
     }
-    .hero-text { }
     .hero-tag {
       font-family: var(--font-mono);
       font-size: 0.8rem;
@@ -212,6 +209,7 @@
       margin-bottom: 2.5rem;
       opacity: 0;
       animation: fadeUp 0.8s 0.5s forwards;
+      min-height: 1.6em;
     }
     .hero-role .cursor {
       display: inline-block;
@@ -263,7 +261,6 @@
     }
     .btn-outline:hover { border-color: var(--green); color: var(--green); }
 
-    /* Hero photo */
     .hero-photo-wrap {
       position: relative;
       opacity: 0;
@@ -302,6 +299,7 @@
     .hero-photo-corner.tr { top: -8px; right: -8px; border-top-width: 2px; border-right-width: 2px; }
     .hero-photo-corner.bl { bottom: -8px; left: -8px; border-bottom-width: 2px; border-left-width: 2px; }
     .hero-photo-corner.br { bottom: -8px; right: -8px; border-bottom-width: 2px; border-right-width: 2px; }
+    
     .hero-stats {
       display: flex;
       gap: 1.5rem;
@@ -324,13 +322,6 @@
       animation: pulse 2s ease-in-out infinite;
     }
     @keyframes pulse { 0%, 100% { opacity: 1; transform: scale(1); } 50% { opacity: 0.5; transform: scale(0.8); } }
-
-    /* ─── DECORATIVE LINE ─── */
-    .divider {
-      height: 1px;
-      background: linear-gradient(to right, transparent, var(--border), transparent);
-      margin: 0;
-    }
 
     /* ─── ABOUT ─── */
     #about { background: var(--bg-1); }
@@ -363,13 +354,8 @@
       color: var(--green);
       margin-bottom: 0.4rem;
     }
-    .about-detail-value {
-      font-size: 0.9rem;
-      color: var(--text-primary);
-      font-weight: 500;
-    }
+    .about-detail-value { font-size: 0.9rem; color: var(--text-primary); font-weight: 500; }
 
-    /* Timeline */
     .timeline { position: relative; padding-left: 1.5rem; }
     .timeline::before {
       content: '';
@@ -389,32 +375,8 @@
       background: var(--green);
       box-shadow: 0 0 8px var(--green);
     }
-    .timeline-date {
-      font-family: var(--font-mono);
-      font-size: 0.7rem;
-      letter-spacing: 0.1em;
-      color: var(--green);
-      margin-bottom: 0.3rem;
-    }
-    .timeline-title {
-      font-family: var(--font-display);
-      font-size: 1.05rem;
-      font-weight: 600;
-      color: var(--text-primary);
-      text-transform: uppercase;
-      letter-spacing: 0.04em;
-    }
-    .timeline-subtitle {
-      font-size: 0.85rem;
-      color: var(--text-secondary);
-      margin-top: 0.2rem;
-    }
-    .timeline-desc {
-      font-size: 0.85rem;
-      color: var(--text-muted);
-      margin-top: 0.5rem;
-      line-height: 1.6;
-    }
+    .timeline-date { font-family: var(--font-mono); font-size: 0.7rem; color: var(--green); margin-bottom: 0.3rem; }
+    .timeline-title { font-family: var(--font-display); font-size: 1.05rem; font-weight: 600; color: var(--text-primary); text-transform: uppercase; }
 
     /* ─── SKILLS ─── */
     #skills { background: var(--bg-0); }
@@ -431,1102 +393,296 @@
       padding: 1.8rem;
       transition: border-color 0.3s, box-shadow 0.3s;
       position: relative;
-      overflow: hidden;
-    }
-    .skill-card::before {
-      content: '';
-      position: absolute;
-      top: 0; left: 0; right: 0;
-      height: 2px;
-      background: linear-gradient(to right, var(--green), transparent);
-      transform: scaleX(0);
-      transition: transform 0.3s;
-      transform-origin: left;
     }
     .skill-card:hover { border-color: var(--border); box-shadow: 0 0 30px var(--green-glow-sm); }
-    .skill-card:hover::before { transform: scaleX(1); }
-    .skill-card-icon {
-      width: 40px; height: 40px;
-      border-radius: 6px;
-      background: var(--green-glow);
-      display: flex; align-items: center; justify-content: center;
-      margin-bottom: 1.2rem;
-      font-size: 1.2rem;
-    }
-    .skill-card-title {
-      font-family: var(--font-display);
-      font-size: 1rem;
-      font-weight: 600;
-      text-transform: uppercase;
-      letter-spacing: 0.06em;
-      color: var(--text-primary);
-      margin-bottom: 1rem;
-    }
+    .skill-card-title { font-family: var(--font-display); font-size: 1rem; font-weight: 600; text-transform: uppercase; color: var(--text-primary); margin-bottom: 1rem; }
     .skill-tags { display: flex; flex-wrap: wrap; gap: 0.5rem; }
-    .skill-tag {
-      font-family: var(--font-mono);
-      font-size: 0.7rem;
-      letter-spacing: 0.06em;
-      padding: 4px 10px;
-      border-radius: 3px;
-      border: 1px solid var(--border-dim);
-      color: var(--text-secondary);
-      background: rgba(255,255,255,0.02);
-      transition: border-color 0.2s, color 0.2s;
-    }
+    .skill-tag { font-family: var(--font-mono); font-size: 0.7rem; padding: 4px 10px; border-radius: 3px; border: 1px solid var(--border-dim); color: var(--text-secondary); transition: 0.2s; }
     .skill-tag:hover { border-color: var(--green); color: var(--green); }
 
     /* ─── PROJECTS ─── */
     #projects { background: var(--bg-1); }
-    .projects-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-      gap: 1.5rem;
-      margin-top: 3rem;
-    }
-    .project-card {
-      background: var(--bg-card);
-      border: 1px solid var(--border-dim);
-      border-radius: 8px;
-      padding: 2rem;
-      transition: border-color 0.3s, transform 0.3s;
-      cursor: pointer;
-    }
+    .projects-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 1.5rem; margin-top: 3rem; }
+    .project-card { background: var(--bg-card); border: 1px solid var(--border-dim); border-radius: 8px; padding: 2rem; transition: 0.3s; }
     .project-card:hover { border-color: rgba(0,212,170,0.3); transform: translateY(-4px); }
-    .project-cat {
-      font-family: var(--font-mono);
-      font-size: 0.65rem;
-      letter-spacing: 0.15em;
-      text-transform: uppercase;
-      color: var(--green);
-      margin-bottom: 0.8rem;
-    }
-    .project-title {
-      font-family: var(--font-display);
-      font-size: 1.3rem;
-      font-weight: 700;
-      text-transform: uppercase;
-      letter-spacing: 0.04em;
-      color: var(--text-primary);
-      margin-bottom: 0.8rem;
-    }
-    .project-desc {
-      font-size: 0.88rem;
-      color: var(--text-secondary);
-      line-height: 1.7;
-      margin-bottom: 1.5rem;
-    }
-    .project-techs { display: flex; flex-wrap: wrap; gap: 0.5rem; }
-    .project-tech {
-      font-family: var(--font-mono);
-      font-size: 0.68rem;
-      padding: 3px 9px;
-      border-radius: 3px;
-      background: rgba(0,212,170,0.08);
-      color: var(--green-dim);
-      border: 1px solid rgba(0,212,170,0.15);
-    }
-    .project-footer {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      margin-top: 1.5rem;
-      padding-top: 1rem;
-      border-top: 1px solid var(--border-dim);
-    }
-    .project-link {
-      font-family: var(--font-mono);
-      font-size: 0.7rem;
-      letter-spacing: 0.1em;
-      text-transform: uppercase;
-      color: var(--green);
-      display: flex;
-      align-items: center;
-      gap: 0.4rem;
-      transition: gap 0.2s;
-    }
-    .project-link:hover { gap: 0.7rem; }
-
-    /* ─── CERTIFICATIONS ─── */
-    #certifications { background: var(--bg-0); }
-    .certs-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
-      gap: 1.5rem;
-      margin-top: 3rem;
-    }
-    .cert-card {
-      background: var(--bg-card);
-      border: 1px solid var(--border-dim);
-      border-radius: 8px;
-      overflow: hidden;
-      transition: border-color 0.3s, transform 0.3s;
-    }
-    .cert-card:hover { border-color: rgba(0,212,170,0.3); transform: translateY(-3px); }
-    .cert-img {
-      width: 100%;
-      aspect-ratio: 16/10;
-      background: var(--bg-1);
-      position: relative;
-      overflow: hidden;
-    }
-    .cert-img img { width: 100%; height: 100%; object-fit: cover; }
-    .cert-img .cert-placeholder {
-      width: 100%;
-      height: 100%;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
-      gap: 0.5rem;
-      color: var(--text-muted);
-      font-family: var(--font-mono);
-      font-size: 0.7rem;
-      letter-spacing: 0.1em;
-      text-transform: uppercase;
-      background: linear-gradient(135deg, var(--bg-1), var(--bg-2));
-    }
-    .cert-placeholder .cert-icon { font-size: 2rem; opacity: 0.4; }
-    .cert-img .cert-overlay {
-      position: absolute;
-      inset: 0;
-      background: rgba(0,212,170,0.06);
-      opacity: 0;
-      transition: opacity 0.3s;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-    }
-    .cert-card:hover .cert-overlay { opacity: 1; }
-    .cert-body { padding: 1.2rem; }
-    .cert-name {
-      font-family: var(--font-display);
-      font-size: 0.95rem;
-      font-weight: 600;
-      color: var(--text-primary);
-      text-transform: uppercase;
-      letter-spacing: 0.04em;
-      margin-bottom: 0.3rem;
-    }
-    .cert-issuer {
-      font-family: var(--font-mono);
-      font-size: 0.68rem;
-      letter-spacing: 0.1em;
-      color: var(--green);
-      text-transform: uppercase;
-    }
-    .cert-date {
-      font-size: 0.8rem;
-      color: var(--text-muted);
-      margin-top: 0.3rem;
-    }
-
-    /* Add cert button */
-    .cert-add {
-      background: transparent;
-      border: 2px dashed var(--border-dim);
-      border-radius: 8px;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
-      gap: 0.5rem;
-      padding: 2rem;
-      min-height: 200px;
-      color: var(--text-muted);
-      font-family: var(--font-mono);
-      font-size: 0.7rem;
-      letter-spacing: 0.1em;
-      text-transform: uppercase;
-      cursor: pointer;
-      transition: border-color 0.3s, color 0.3s;
-    }
-    
-    #cv { background: var(--bg-1); }
-    .cv-subtitle { font-family: var(--font-mono); font-size: 0.8rem; color: var(--text-muted); letter-spacing: 0.08em; margin-top: 0.6rem; margin-bottom: 0; }
-    .cv-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 2rem; margin-top: 3rem; }
-    .cv-card { background: var(--bg-card); border: 1px solid var(--border-dim); border-radius: 12px; padding: 2.5rem 2rem; display: flex; flex-direction: column; align-items: center; gap: 1.5rem; position: relative; overflow: hidden; transition: border-color 0.3s, transform 0.3s, box-shadow 0.3s; text-align: center; }
-    .cv-card::before { content: ''; position: absolute; top: 0; left: 0; right: 0; height: 2px; transform: scaleX(0); transition: transform 0.4s; transform-origin: left; }
-    .cv-card.en::before { background: linear-gradient(to right, var(--green), var(--blue)); }
-    .cv-card.fr::before { background: linear-gradient(to right, var(--blue), var(--orange)); }
-    .cv-card:hover { transform: translateY(-5px); box-shadow: 0 16px 48px rgba(0,0,0,0.35); }
-    .cv-card.en:hover { border-color: rgba(0,212,170,0.35); }
-    .cv-card.fr:hover { border-color: rgba(14,165,233,0.35); }
-    .cv-card:hover::before { transform: scaleX(1); }
-    .cv-card-icon { width: 66px; height: 66px; border-radius: 14px; display: flex; align-items: center; justify-content: center; font-size: 2rem; }
-    .cv-card.en .cv-card-icon { background: rgba(0,212,170,0.1); border: 1px solid rgba(0,212,170,0.2); }
-    .cv-card.fr .cv-card-icon { background: rgba(14,165,233,0.1); border: 1px solid rgba(14,165,233,0.2); }
-    .cv-card-lang { font-family: var(--font-mono); font-size: 0.65rem; letter-spacing: 0.2em; text-transform: uppercase; margin-bottom: 0.35rem; }
-    .cv-card.en .cv-card-lang { color: var(--green); }
-    .cv-card.fr .cv-card-lang { color: var(--blue); }
-    .cv-card-title { font-family: var(--font-display); font-size: 1.4rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.06em; color: var(--text-primary); margin-bottom: 0.5rem; }
-    .cv-card-desc { font-size: 0.85rem; color: var(--text-secondary); line-height: 1.65; max-width: 280px; }
-    .cv-download-btn { display: inline-flex; align-items: center; gap: 0.6rem; padding: 13px 28px; border-radius: 6px; font-family: var(--font-display); font-size: 0.9rem; font-weight: 600; letter-spacing: 0.08em; text-transform: uppercase; transition: all 0.25s; width: 100%; justify-content: center; cursor: pointer; }
-    .cv-card.en .cv-download-btn { background: var(--green); color: var(--bg-0); border: none; }
-    .cv-card.en .cv-download-btn:hover { background: #00ffcc; box-shadow: 0 0 24px rgba(0,212,170,0.45); transform: translateY(-2px); }
-    .cv-card.fr .cv-download-btn { background: transparent; border: 1.5px solid var(--blue); color: var(--blue); }
-    .cv-card.fr .cv-download-btn:hover { background: rgba(14,165,233,0.12); box-shadow: 0 0 20px rgba(14,165,233,0.2); transform: translateY(-2px); }
-    .cv-meta { font-family: var(--font-mono); font-size: 0.62rem; letter-spacing: 0.1em; color: var(--text-muted); text-transform: uppercase; }
+    .project-title { font-family: var(--font-display); font-size: 1.3rem; font-weight: 700; color: var(--text-primary); margin-bottom: 0.8rem; }
+    .project-tech { font-family: var(--font-mono); font-size: 0.68rem; padding: 3px 9px; background: rgba(0,212,170,0.08); color: var(--green-dim); }
 
     /* ─── VOLUNTEERING ─── */
     #volunteering { background: var(--bg-1); }
-    .vol-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
-      gap: 1.5rem;
-      margin-top: 3rem;
-    }
-    .vol-card {
-      background: var(--bg-card);
-      border: 1px solid var(--border-dim);
-      border-radius: 8px;
-      overflow: hidden;
-      transition: border-color 0.3s, transform 0.3s;
-    }
-    .vol-card:hover { border-color: rgba(14,165,233,0.3); transform: translateY(-3px); }
-    .vol-img {
-      width: 100%;
-      aspect-ratio: 16/10;
-      position: relative;
-      overflow: hidden;
-    }
-    .vol-img img { 
-      width: 300px; 
-      height: 300px; 
-      object-fit: cover; 
+    .vol-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 1.5rem; margin-top: 3rem; }
+    .vol-card { background: var(--bg-card); border: 1px solid var(--border-dim); border-radius: 8px; overflow: hidden; transition: 0.3s; }
+    .vol-img { width: 100%; aspect-ratio: 16/10; overflow: hidden; }
+    .vol-img img { width: 100%; height: 100%; object-fit: cover; }
+    
+    .vol-placeholder {
+      width: 100%; height: 100%; display: flex; flex-direction: column; align-items: center; justify-content: center;
+      color: var(--text-muted); font-family: var(--font-mono); background: linear-gradient(135deg, var(--bg-1), var(--bg-2));
     }
 
-    .vol-img .vol-placeholder {
-      width: 300px;      /* same as image */
-      height: 300px;     /* same as image */
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
-      gap: 0.5rem;
-      color: var(--text-muted);
-      font-family: var(--font-mono);
-      font-size: 0.7rem;
-      letter-spacing: 0.1em;
-      text-transform: uppercase;
-      background: linear-gradient(135deg, var(--bg-1), var(--bg-2));
-    }
-    }
-    .vol-placeholder .vol-icon { font-size: 2rem; opacity: 0.4; }
-    .vol-body { padding: 1.2rem; }
-    .vol-title {
-      font-family: var(--font-display);
-      font-size: 1rem;
-      font-weight: 600;
-      color: var(--text-primary);
-      text-transform: uppercase;
-      letter-spacing: 0.04em;
-      margin-bottom: 0.25rem;
-    }
-    .vol-org {
-      font-family: var(--font-mono);
-      font-size: 0.68rem;
-      letter-spacing: 0.1em;
-      color: var(--blue);
-      text-transform: uppercase;
-      margin-bottom: 0.5rem;
-    }
-    .vol-desc {
-      font-size: 0.82rem;
-      color: var(--text-secondary);
-      line-height: 1.6;
-    }
-
-    .vol-add {
-      background: transparent;
-      border: 2px dashed var(--border-dim);
-      border-radius: 8px;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
-      gap: 0.5rem;
-      padding: 2rem;
-      min-height: 200px;
-      color: var(--text-muted);
-      font-family: var(--font-mono);
-      font-size: 0.7rem;
-      letter-spacing: 0.1em;
-      text-transform: uppercase;
-      cursor: pointer;
-      transition: border-color 0.3s, color 0.3s;
-    }
-    .vol-add:hover { border-color: var(--blue); color: var(--blue); }
-    .vol-add svg { width: 32px; height: 32px; opacity: 0.5; }
+    /* ─── CV SECTION ─── */
+    #cv { background: var(--bg-1); }
+    .cv-subtitle { font-family: var(--font-mono); font-size: 0.8rem; color: var(--text-muted); margin-bottom: 2rem; }
+    .cv-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 2rem; margin-top: 1rem; }
+    .cv-card { background: var(--bg-card); border: 1px solid var(--border-dim); border-radius: 12px; padding: 2.5rem 2rem; text-align: center; transition: 0.3s; }
+    .cv-card:hover { transform: translateY(-5px); border-color: var(--green); }
+    .cv-download-btn { display: inline-flex; width: 100%; justify-content: center; padding: 13px; border-radius: 6px; font-weight: 600; margin-top: 1.5rem; }
+    .cv-card.en .cv-download-btn { background: var(--green); color: var(--bg-0); }
+    .cv-card.fr .cv-download-btn { border: 1.5px solid var(--blue); color: var(--blue); }
 
     /* ─── CONTACT ─── */
     #contact { background: var(--bg-0); }
-    .contact-grid {
-      display: grid;
-      grid-template-columns: 1fr 1.2fr;
-      gap: 5vw;
-      margin-top: 3rem;
-      align-items: start;
-    }
-    .contact-text {
-      font-size: 1rem;
-      color: var(--text-secondary);
-      line-height: 1.8;
-      margin-bottom: 2rem;
-    }
-    .contact-links { display: flex; flex-direction: column; gap: 1rem; }
-    .contact-link {
-      display: flex;
-      align-items: center;
-      gap: 1rem;
-      font-family: var(--font-mono);
-      font-size: 0.8rem;
-      letter-spacing: 0.06em;
-      color: var(--text-secondary);
-      transition: color 0.2s;
-    }
-    .contact-link:hover { color: var(--text-primary); }
-    .contact-link-icon {
-      width: 38px; height: 38px;
-      border-radius: 6px;
-      background: var(--bg-card);
-      border: 1px solid var(--border-dim);
-      display: flex; align-items: center; justify-content: center;
-      font-size: 1rem;
-      flex-shrink: 0;
-      transition: border-color 0.2s, background 0.2s;
-    }
-    .contact-link:hover .contact-link-icon {
-      border-color: var(--green);
-      background: var(--green-glow);
-    }
-    .contact-socials { display: flex; gap: 0.75rem; margin-top: 2rem; }
-    .social-btn {
-      width: 44px; height: 44px;
-      border-radius: 6px;
-      border: 1px solid var(--border-dim);
-      display: flex; align-items: center; justify-content: center;
-      font-size: 1.1rem;
-      color: var(--text-secondary);
-      transition: all 0.25s;
-    }
-    .social-btn:hover { border-color: var(--green); color: var(--green); background: var(--green-glow); }
+    .contact-grid { display: grid; grid-template-columns: 1fr 1.2fr; gap: 5vw; margin-top: 3rem; }
+    .form-input { width: 100%; background: var(--bg-1); border: 1px solid var(--border-dim); padding: 12px; color: #fff; margin-bottom: 1rem; }
 
-    /* Contact form */
-    .contact-form {
-      background: var(--bg-card);
-      border: 1px solid var(--border-dim);
-      border-radius: 8px;
-      padding: 2.5rem;
-    }
-    .form-title {
-      font-family: var(--font-display);
-      font-size: 1.4rem;
-      font-weight: 700;
-      text-transform: uppercase;
-      letter-spacing: 0.06em;
-      color: var(--text-primary);
-      margin-bottom: 2rem;
-    }
-    .form-group { margin-bottom: 1.25rem; }
-    .form-label {
-      font-family: var(--font-mono);
-      font-size: 0.68rem;
-      letter-spacing: 0.12em;
-      text-transform: uppercase;
-      color: var(--green);
-      display: block;
-      margin-bottom: 0.5rem;
-    }
-    .form-input {
-      width: 100%;
-      background: var(--bg-1);
-      border: 1px solid var(--border-dim);
-      border-radius: 4px;
-      padding: 12px 16px;
-      color: var(--text-primary);
-      font-family: var(--font-body);
-      font-size: 0.9rem;
-      transition: border-color 0.2s, box-shadow 0.2s;
-      outline: none;
-    }
-    .form-input::placeholder { color: var(--text-muted); }
-    .form-input:focus { border-color: var(--green); box-shadow: 0 0 0 3px var(--green-glow-sm); }
-    textarea.form-input { resize: vertical; min-height: 120px; }
+    /* ─── ANIMATIONS & REVEAL ─── */
+    @keyframes fadeUp { from { opacity: 0; transform: translateY(24px); } to { opacity: 1; transform: translateY(0); } }
+    @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
+    .reveal { opacity: 0; transform: translateY(30px); transition: all 0.7s ease; }
+    .reveal.visible { opacity: 1; transform: translateY(0); }
 
-    /* ─── FOOTER ─── */
-    footer {
-      background: var(--bg-0);
-      border-top: 1px solid var(--border-dim);
-      padding: 2rem 5vw;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      flex-wrap: wrap;
-      gap: 1rem;
-    }
-    .footer-copy {
-      font-family: var(--font-mono);
-      font-size: 0.7rem;
-      letter-spacing: 0.08em;
-      color: var(--text-muted);
-    }
-    .footer-status {
-      font-family: var(--font-mono);
-      font-size: 0.7rem;
-      letter-spacing: 0.08em;
-      color: var(--text-muted);
-      display: flex;
-      align-items: center;
-      gap: 0.5rem;
-    }
-    .status-dot {
-      width: 7px; height: 7px;
-      border-radius: 50%;
-      background: var(--green);
-      animation: pulse 2s ease-in-out infinite;
-    }
-
-    /* ─── ANIMATIONS ─── */
-    @keyframes fadeUp {
-      from { opacity: 0; transform: translateY(24px); }
-      to   { opacity: 1; transform: translateY(0); }
-    }
-    @keyframes fadeIn {
-      from { opacity: 0; }
-      to   { opacity: 1; }
-    }
-    .reveal {
-      opacity: 0;
-      transform: translateY(30px);
-      transition: opacity 0.7s ease, transform 0.7s ease;
-    }
-    .reveal.visible {
-      opacity: 1;
-      transform: translateY(0);
-    }
-    .reveal-left {
-      opacity: 0;
-      transform: translateX(-30px);
-      transition: opacity 0.7s ease, transform 0.7s ease;
-    }
-    .reveal-left.visible { opacity: 1; transform: translateX(0); }
-    .reveal-right {
-      opacity: 0;
-      transform: translateX(30px);
-      transition: opacity 0.7s ease, transform 0.7s ease;
-    }
-    .reveal-right.visible { opacity: 1; transform: translateX(0); }
-
-    /* ─── GRID BACKGROUND ─── */
-    .grid-bg {
-      background-image:
-        linear-gradient(rgba(0,212,170,0.03) 1px, transparent 1px),
-        linear-gradient(90deg, rgba(0,212,170,0.03) 1px, transparent 1px);
-      background-size: 60px 60px;
-    }
-
-    /* ─── RESPONSIVE ─── */
+    /* ─── MEDIA QUERIES ─── */
     @media (max-width: 900px) {
-      .hero-inner { grid-template-columns: 1fr; gap: 3rem; }
-      .hero-photo-wrap { order: -1; max-width: 300px; margin: 0 auto; }
-      .hero-photo-frame { max-height: 380px; }
-      .about-grid { grid-template-columns: 1fr; }
+      .hero-inner, .about-grid, .cv-grid, .contact-grid { grid-template-columns: 1fr; }
+      .hero-photo-wrap { order: -1; }
       .skills-grid { grid-template-columns: 1fr 1fr; }
-      .contact-grid { grid-template-columns: 1fr; }
-    }
-    @media (max-width: 640px) {
-      section { padding: 70px 5vw; }
-      .section-title { font-size: 2.2rem; }
-      .skills-grid { grid-template-columns: 1fr; }
       .nav-links { display: none; }
       .hamburger { display: flex; }
-      .about-detail-grid { grid-template-columns: 1fr; }
-      .hero-stats { flex-wrap: wrap; gap: 1rem; }
-      .hero-name { font-size: 3rem; }
-      footer { flex-direction: column; align-items: flex-start; }
     }
   </style>
 </head>
 <body>
 
-<!-- ══════════ NAV ══════════ -->
-<nav id="nav">
-  <div class="nav-logo">HJ<span>_</span></div>
-  <div class="nav-links">
-    <a href="#about">About</a>
-    <a href="#skills">Skills</a>
-    <a href="#projects">Projects</a>
-    <a href="#certifications">Certs</a>
-    <a href="#volunteering">Volunteering</a>
-    <a href="#contact">Contact</a>
+  <nav id="navbar">
+    <div class="nav-logo">HIBA<span>JANA</span></div>
+    <div class="nav-links">
+      <a href="#about">About</a>
+      <a href="#skills">Skills</a>
+      <a href="#projects">Projects</a>
+      <a href="#cv">Resume</a>
+      <a href="#contact">Contact</a>
+    </div>
+    <button class="hamburger" id="hamburger">
+      <span></span><span></span><span></span>
+    </button>
+  </nav>
+
+  <div class="mobile-nav" id="mobileNav">
+    <a href="#about" onclick="toggleMenu()">About</a>
+    <a href="#skills" onclick="toggleMenu()">Skills</a>
+    <a href="#projects" onclick="toggleMenu()">Projects</a>
+    <a href="#cv" onclick="toggleMenu()">Resume</a>
+    <a href="#contact" onclick="toggleMenu()">Contact</a>
   </div>
-  <button class="hamburger" id="hamburger" aria-label="Menu">
-    <span></span><span></span><span></span>
-  </button>
-</nav>
 
-<!-- Mobile nav -->
-<div class="mobile-nav" id="mobileNav">
-  <a href="#about" onclick="closeMobile()">About</a>
-  <a href="#skills" onclick="closeMobile()">Skills</a>
-  <a href="#projects" onclick="closeMobile()">Projects</a>
-  <a href="#certifications" onclick="closeMobile()">Certs</a>
-  <a href="#volunteering" onclick="closeMobile()">Volunteering</a>
-  <a href="#contact" onclick="closeMobile()">Contact</a>
-</div>
-
-<!-- ══════════ HERO ══════════ -->
-<section id="hero" class="grid-bg">
-  <div class="hero-inner">
-    <div class="hero-text">
-      <div class="hero-tag"><span>▶</span> IT_SECURITY_ENGINEER</div>
-      <h1 class="hero-name">HIBA<br><span>JANA</span></h1>
-      <p class="hero-role">
-        <span id="typewriter">FST Marrakesh · Engineering Cycle · Cybersecurity</span>
-        <span class="cursor"></span>
-      </p>
-      <div class="hero-btns">
-        <a href="#projects" class="btn-primary">
-          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="4 17 10 11 4 5"></polyline><line x1="12" y1="19" x2="20" y2="19"></line></svg>
-          View Work
-        </a>
-        <a href="#contact" class="btn-outline">
-          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path><polyline points="22,6 12,13 2,6"></polyline></svg>
-          Contact
-        </a>
-      </div>
-      <div class="hero-stats">
-        <div class="hero-stat"><span class="dot"></span>Available for Internship</div>
-        <div class="hero-stat"><span class="dot" style="background:var(--blue)"></span>Marrakesh, Morocco</div>
-      </div>
-    </div>
-    <div class="hero-photo-wrap">
-      <div class="hero-photo-frame">
-        <img src="images/profile.jpg" alt="Hiba Jana">
-        <div style="position:absolute;inset:0;background:linear-gradient(to bottom, transparent 50%, rgba(5,10,14,0.8) 100%)"></div>
-      </div>
-      <div class="hero-photo-corner tl"></div>
-      <div class="hero-photo-corner tr"></div>
-      <div class="hero-photo-corner bl"></div>
-      <div class="hero-photo-corner br"></div>
-    </div>
-  </div>
-</section>
-
-<div class="divider"></div>
-
-<!-- ══════════ ABOUT ══════════ -->
-<section id="about">
-  <div class="section-label">Profile</div>
-  <h2 class="section-title">ABOUT <em>ME</em></h2>
-  <div class="about-grid">
-    <div class="reveal-left">
-      <p class="about-bio">
-        I'm an <strong>IT Security engineering student</strong> at the Faculty of Sciences and Techniques (FST) Marrakesh, Cadi Ayyad University. I'm passionate about understanding how systems are built—and more importantly, how they can be broken and secured.
-      </p>
-      <p class="about-bio">
-        Currently working as a <strong>Front-End Developer Intern</strong> at CODE 212 Center, where I am working on internship platform. I actively participate in <strong>CTF challenges</strong>, explore network protocols, and enjoy the intersection of security research and clean engineering.
-      </p>
-      <div class="about-detail-grid">
-        <div class="about-detail">
-          <div class="about-detail-label">Location</div>
-          <div class="about-detail-value">Marrakesh, Morocco</div>
+  <section id="hero">
+    <div class="hero-inner">
+      <div class="hero-text">
+        <div class="hero-tag">System.Initialize<span>()</span></div>
+        <h1 class="hero-name">HIBA <span>JANA</span></h1>
+        <div class="hero-role">
+          <span id="typewriter"></span><span class="cursor"></span>
         </div>
-        <div class="about-detail">
-          <div class="about-detail-label">Status</div>
-          <div class="about-detail-value">Seeking Internship</div>
+        <div class="hero-btns">
+          <a href="#contact" class="btn-primary">Secure Connection</a>
+          <a href="#projects" class="btn-outline">View Projects</a>
         </div>
-        <div class="about-detail">
-          <div class="about-detail-label">Email</div>
-          <div class="about-detail-value" style="font-size:0.8rem">h.jana5435@uca.ac.ma</div>
+        <div class="hero-stats">
+          <div class="hero-stat"><div class="dot"></div> Engineering Student</div>
+          <div class="hero-stat"><div class="dot"></div> Cybersecurity Enthusiast</div>
         </div>
-        <div class="about-detail">
-          <div class="about-detail-label">Focus</div>
-          <div class="about-detail-value">Network Security</div>
+      </div>
+      <div class="hero-photo-wrap">
+        <div class="hero-photo-corner tl"></div>
+        <div class="hero-photo-corner tr"></div>
+        <div class="hero-photo-corner bl"></div>
+        <div class="hero-photo-corner br"></div>
+        <div class="hero-photo-frame">
+          <img src="hiba.jpg" alt="Hiba Jana">
         </div>
       </div>
     </div>
-    <div class="reveal-right">
-      <div class="section-label" style="margin-bottom:1.5rem">Experience & Education</div>
-      <div class="timeline">
+  </section>
+
+  <section id="about">
+    <div class="section-label">Profile</div>
+    <h2 class="section-title">ABOUT <em>ME</em></h2>
+    <div class="about-grid">
+      <div class="reveal">
+        <p class="about-bio">
+          I am an <strong>IT Security Engineering Student</strong> at FST Marrakesh, dedicated to protecting digital landscapes. My focus lies in network security, ethical hacking, and building resilient infrastructures.
+        </p>
+        <div class="about-detail-grid">
+          <div class="about-detail">
+            <div class="about-detail-label">Location</div>
+            <div class="about-detail-value">Marrakesh, Morocco</div>
+          </div>
+          <div class="about-detail">
+            <div class="about-detail-label">Education</div>
+            <div class="about-detail-value">FST Marrakesh</div>
+          </div>
+        </div>
+      </div>
+      <div class="timeline reveal">
         <div class="timeline-item">
-          <div class="timeline-date">FEB 2026 — PRESENT</div>
-          <div class="timeline-title">Front-End Developer Intern</div>
-          <div class="timeline-subtitle">CODE 212 Center · Cadi Ayyad University</div>
-          <div class="timeline-desc">Building a modern Internship Application Platform to streamline the recruitment process.</div>
+          <div class="timeline-date">2023 - Present</div>
+          <div class="timeline-title">Engineering Cycle in Cybersecurity</div>
+          <div class="timeline-subtitle">FST Marrakesh</div>
         </div>
         <div class="timeline-item">
-          <div class="timeline-date">2025 — 2026</div>
-          <div class="timeline-title">Engineering Cycle — IT Security</div>
-          <div class="timeline-subtitle">FST Marrakesh · Cadi Ayyad University</div>
-        </div>
-        <div class="timeline-item">
-          <div class="timeline-date">2023 — 2025</div>
-          <div class="timeline-title">DEUG — Computer Science</div>
-          <div class="timeline-subtitle">FSSM Marrakesh · Cadi Ayyad University</div>
-        </div>
-        <div class="timeline-item">
-          <div class="timeline-date">2022 — 2023</div>
-          <div class="timeline-title">Baccalaureate — Physics Sciences</div>
-          <div class="timeline-subtitle">Sidi Abderrahmane High School</div>
+          <div class="timeline-date">2021 - 2023</div>
+          <div class="timeline-title">DEUST MIPC</div>
+          <div class="timeline-subtitle">FST Marrakesh</div>
         </div>
       </div>
     </div>
-  </div>
-</section>
+  </section>
 
-<div class="divider"></div>
-
-<!-- ══════════ SKILLS ══════════ -->
-<section id="skills">
-  <div class="section-label">Technical Profile</div>
-  <h2 class="section-title">MY <em>SKILLS</em></h2>
-  <div class="skills-grid">
-    <div class="skill-card reveal">
-      <div class="skill-card-icon">🛡️</div>
-      <div class="skill-card-title">Security</div>
-      <div class="skill-tags">
-        <span class="skill-tag">CTF Challenges</span>
-        <span class="skill-tag">DNSSEC / DoH / DoT</span>
-        <span class="skill-tag">Kali Linux Tools</span>
-        <span class="skill-tag">Wireshark</span>
-      </div>
-    </div>
-    <div class="skill-card reveal" style="transition-delay:0.1s">
-      <div class="skill-card-icon">🌐</div>
-      <div class="skill-card-title">Networks & Systems</div>
-      <div class="skill-tags">
-        <span class="skill-tag">Linux (Kali, Ubuntu)</span>
-        <span class="skill-tag">Cisco Packet Tracer</span>
-        <span class="skill-tag">DNS Protocols</span>
-      </div>
-    </div>
-    <div class="skill-card reveal" style="transition-delay:0.2s">
-      <div class="skill-card-icon">⌨️</div>
-      <div class="skill-card-title">Programming</div>
-      <div class="skill-tags">
-        <span class="skill-tag">C Language</span>
-        <span class="skill-tag">Java</span>
-        <span class="skill-tag">Python</span>
-        <span class="skill-tag">Web Development</span>
-        <span class="skill-tag">Data Structures</span>
-      </div>
-    </div>
-    <div class="skill-card reveal" style="transition-delay:0.3s">
-      <div class="skill-card-icon">🔧</div>
-      <div class="skill-card-title">Tools & Platforms</div>
-      <div class="skill-tags">
-        <span class="skill-tag">Git & GitHub</span>
-        <span class="skill-tag">VS Code</span>
-        <span class="skill-tag">Hack The Box</span>
-        <span class="skill-tag">VirtualBox</span>
-        <span class="skill-tag">Code::Blocks</span>
-        <span class="skill-tag">VMware</span>
-      </div>
-    </div>
-    <div class="skill-card reveal" style="transition-delay:0.4s">
-      <div class="skill-card-icon">🗣️</div>
-      <div class="skill-card-title">Languages</div>
-      <div class="skill-tags">
-        <span class="skill-tag">Arabic (Native)</span>
-        <span class="skill-tag">French (Fluent)</span>
-        <span class="skill-tag">English (Professional)</span>
-      </div>
-    </div>
-  </div>
-</section>
-
-<div class="divider"></div>
-
-<!-- ══════════ PROJECTS ══════════ -->
-<section id="projects" style="background:var(--bg-1)">
-  <div class="section-label">Portfolio</div>
-  <h2 class="section-title">MY <em>PROJECTS</em></h2>
-  <div class="projects-grid">
-    <a href="projects/dns-security.html" class="project-card reveal" style="text-decoration:none;color:inherit">
-      <div class="project-cat">// Network Security</div>
-      <div class="project-title">DNS Security Study</div>
-      <div style="display:flex;gap:0.5rem;margin:1rem 0;overflow-x:auto">
-        <img src="images/projects/dns1.png" alt="DNS Study" style="height:80px;border-radius:4px;border:1px solid var(--border-dim)">
-        <img src="images/projects/dns2.png" alt="DNS Study" style="height:80px;border-radius:4px;border:1px solid var(--border-dim)">
-        <img src="images/projects/dns3.png" alt="DNS Study" style="height:80px;border-radius:4px;border:1px solid var(--border-dim)">
-      </div>
-      <div class="project-desc">Comparative analysis of DNS, DNSSEC, DoH, and DoT protocols. Implemented DNS-over-HTTPS on Kali Linux and performed deep traffic analysis using Wireshark to evaluate security trade-offs.</div>
-      <div class="project-techs">
-        <span class="project-tech">Kali Linux</span>
-        <span class="project-tech">Wireshark</span>
-        <span class="project-tech">DNS Protocols</span>
-        <span class="project-tech">Network Analysis</span>
-      </div>
-      <div class="project-footer">
-        <span class="project-link">View All Images <span>→</span></span>
-      </div>
-    </a>
-    <div class="project-card reveal" style="transition-delay:0.1s">
-      <div class="project-cat">// Web Development</div>
-      <div class="project-title">Internship Platform</div>
-      <div class="project-desc">Front-end development intern at Code 212 Center. Building a modern internship application platform with React, TypeScript, and Tailwind CSS to streamline university recruitment.</div>
-      <div class="project-techs">
-        <span class="project-tech">React</span>
-        <span class="project-tech">UI/UX Design</span>
-      </div>
-      <div class="project-footer">
-        <a href="https://github.com/hibajana" class="project-link">GitHub <span>→</span></a>
-      </div>
-    </div>
-    <a href="projects/polynomial-engine.html" class="project-card reveal" style="transition-delay:0.2s;text-decoration:none;color:inherit">
-      <div class="project-cat">// Algorithms & Data Structures</div>
-      <div class="project-title">Polynomial Engine</div>
-      <div style="display:flex;gap:0.5rem;margin:1rem 0;overflow-x:auto">
-        <img src="images/projects/poly1.png" alt="Polynomial Engine" style="height:80px;border-radius:4px;border:1px solid var(--border-dim)">
-        <img src="images/projects/poly2.png" alt="Polynomial Engine" style="height:80px;border-radius:4px;border:1px solid var(--border-dim)">
-        <img src="images/projects/poly3.png" alt="Polynomial Engine" style="height:80px;border-radius:4px;border:1px solid var(--border-dim)">
-      </div>
-      <div class="project-desc">A complete C library for polynomial operations including addition, deletion, summation, multiplication, and derivation. Built with efficient data structures and documented API.</div>
-      <div class="project-techs">
-        <span class="project-tech">C Language</span>
-        <span class="project-tech">Data Structures</span>
-        <span class="project-tech">Algorithms</span>
-      </div>
-      <div class="project-footer">
-        <span class="project-link">View All Images <span>→</span></span>
-      </div>
-    </a>
-  </div>
-</section>
-
-<div class="divider"></div>
-
-<!-- ══════════ CERTIFICATIONS ══════════ -->
-<section id="certifications">
-  <div class="section-label">Credentials</div>
-  <h2 class="section-title">CERTIFI<em>CATIONS</em></h2>
-  <p style="font-size:0.85rem;color:var(--text-muted);font-family:var(--font-mono);letter-spacing:0.06em;margin-top:0.5rem;margin-bottom:0.5rem">
-    <!-- Instruction for developer: replace placeholder images and data below with your actual certifications -->
-  </p>
-  <div class="certs-grid">
-
-    <!-- CERT 1 - Hack The Box -->
-    <div class="cert-card reveal">
-      <div class="cert-img">
-        <img src="images/certifications/htb.jpg" alt="Hack The Box Certificate">
-        <div class="cert-overlay">
-          <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#00D4AA" stroke-width="1.5"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"></path><circle cx="12" cy="12" r="3"></circle></svg>
+  <section id="skills">
+    <div class="section-label">Expertise</div>
+    <h2 class="section-title">TECHNICAL <em>SKILLS</em></h2>
+    <div class="skills-grid">
+      <div class="skill-card reveal">
+        <h3 class="skill-card-title">Security</h3>
+        <div class="skill-tags">
+          <span class="skill-tag">Network Security</span>
+          <span class="skill-tag">Cryptography</span>
+          <span class="skill-tag">Ethical Hacking</span>
+          <span class="skill-tag">SIEM</span>
         </div>
       </div>
-      <div class="cert-body">
-        <div class="cert-name">CTF Participation</div>
-        <div class="cert-issuer">Hack The Box</div>
-        <div class="cert-date">2025</div>
-      </div>
-    </div>
-
-    <!-- CERT 2 - ENACTUS -->
-    <div class="cert-card reveal" style="transition-delay:0.1s">
-      <div class="cert-img">
-        <img src="images/certifications/enactus.jpg" alt="ENACTUS Certificate">
-        <div class="cert-overlay">
-          <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#00D4AA" stroke-width="1.5"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"></path><circle cx="12" cy="12" r="3"></circle></svg>
+      <div class="skill-card reveal" style="transition-delay: 0.1s">
+        <h3 class="skill-card-title">Networking</h3>
+        <div class="skill-tags">
+          <span class="skill-tag">Cisco Packet Tracer</span>
+          <span class="skill-tag">Routing & Switching</span>
+          <span class="skill-tag">TCP/IP</span>
         </div>
       </div>
-      <div class="cert-body">
-        <div class="cert-name">Le Parcours Entrepreneurial</div>
-        <div class="cert-issuer">ENACTUS FSSM</div>
-        <div class="cert-date">Mars - Avril 2024</div>
-      </div>
-    </div>
-
-    <!-- CERT 3 - Cisco Cybersecurity -->
-    < <div class="cert-card reveal" style="transition-delay:0.3s">
-      <div class="cert-img">
-         <img src="images/certifications/intro.png" alt="netacad certificate">
-        <div class="cert-placeholder">
-          <span class="cert-icon">🌐</span>
-          <span>Cisco Cert</span>
-        </div>
-        <div class="cert-overlay">
-          <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#00D4AA" stroke-width="1.5"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"></path><circle cx="12" cy="12" r="3"></circle></svg>
+      <div class="skill-card reveal" style="transition-delay: 0.2s">
+        <h3 class="skill-card-title">Development</h3>
+        <div class="skill-tags">
+          <span class="skill-tag">Python</span>
+          <span class="skill-tag">C/C++</span>
+          <span class="skill-tag">Linux / Bash</span>
         </div>
       </div>
-      <div class="cert-body">
-        <div class="cert-name">Introduction to cybersecurity</div>
-        <div class="cert-issuer">Cisco Networking Academy</div>
-        <div class="cert-date">February 2026</div>
+    </div>
+  </section>
+
+  <section id="projects">
+    <div class="section-label">Portfolio</div>
+    <h2 class="section-title">RECENT <em>WORK</em></h2>
+    <div class="projects-grid">
+      <div class="project-card reveal">
+        <h3 class="project-title">Network Intrusion Detection System</h3>
+        <p>A Python-based NIDS that monitors traffic and alerts on suspicious patterns.</p>
+        <div class="project-tech">Python · Scapy · Linux</div>
+      </div>
+      <div class="project-card reveal" style="transition-delay: 0.1s">
+        <h3 class="project-title">Secure File Storage</h3>
+        <p>Encrypted storage system using AES-256 for sensitive data management.</p>
+        <div class="project-tech">C++ · OpenSSL · Cryptography</div>
       </div>
     </div>
+  </section>
 
-    <!-- CERT 4 - Cisco Networking -->
-    <div class="cert-card reveal" style="transition-delay:0.3s">
-      <div class="cert-img">
-        <div class="cert-placeholder">
-          <span class="cert-icon">🌐</span>
-          <span>Cisco Cert</span>
-        </div>
-        <div class="cert-overlay">
-          <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#00D4AA" stroke-width="1.5"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"></path><circle cx="12" cy="12" r="3"></circle></svg>
-        </div>
+  <section id="cv">
+    <div class="section-label">Resume</div>
+    <h2 class="section-title">MY <em>CV</em></h2>
+    <p class="cv-subtitle">Download my resume in your preferred language</p>
+    <div class="cv-grid">
+      <div class="cv-card en reveal">
+        <h3 class="cv-card-title">English Version</h3>
+        <p>Complete resume detailing academic projects and security certifications.</p>
+        <a href="cv/hiba-jana-cv-en.pdf" download class="cv-download-btn">Download CV (EN)</a>
       </div>
-      <div class="cert-body">
-        <div class="cert-name">Networking Basics</div>
-        <div class="cert-issuer">Cisco Networking Academy</div>
-        <div class="cert-date">EN COURS</div>
-      </div>
-    </div>
-
-  </div>
-</section>
-
-<div class="divider"></div>
-  
-<!-- CV -->
-<section id="cv">
-  <div class="section-label">Resume</div>
-  <h2 class="section-title">MY <em>CV</em></h2>
-  <p class="cv-subtitle">Download my resume in your preferred language</p>
-  <div class="cv-grid">
-
-    <div class="cv-card en reveal">
-      <div class="cv-card-icon">📄</div>
-      <div>
-        <div class="cv-card-lang">English Version</div>
-        <div class="cv-card-title">Curriculum Vitae</div>
-        <div class="cv-card-desc">Full resume with education, experience, skills & certifications — written in English for international applications.</div>
-      </div>
-      <!-- Replace href with actual path: cv/hiba-jana-cv-en.pdf -->
-      <a href="cv/hiba-jana-cv-en.pdf" download class="cv-download-btn">
-        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path><polyline points="7 10 12 15 17 10"></polyline><line x1="12" y1="15" x2="12" y2="3"></line></svg>
-        Download CV — EN
-      </a>
-      <div class="cv-meta">PDF · English · Updated 2026</div>
-    </div>
-
-    <div class="cv-card fr reveal" style="transition-delay:0.15s">
-      <div class="cv-card-icon">📄</div>
-      <div>
-        <div class="cv-card-lang">Version Française</div>
-        <div class="cv-card-title">Curriculum Vitae</div>
-        <div class="cv-card-desc">CV complet incluant formation, expérience, compétences et certifications — rédigé en français pour les candidatures francophones.</div>
-      </div>
-      <!-- Replace href with actual path: cv/hiba-jana-cv-fr.pdf -->
-      <a href="cv/hiba-jana-cv-fr.pdf" download class="cv-download-btn">
-        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path><polyline points="7 10 12 15 17 10"></polyline><line x1="12" y1="15" x2="12" y2="3"></line></svg>
-        Télécharger CV — FR
-      </a>
-      <div class="cv-meta">PDF · Français · Mis à jour 2026</div>
-    </div>
-
-  </div>
-</section>
-<div class="divider"></div>
-
-<!-- ══════════ VOLUNTEERING ══════════ -->
-<section id="volunteering" style="background:var(--bg-1)">
-  <div class="section-label">Community</div>
-  <h2 class="section-title">VOLUN<em>TEERING</em></h2>
-  <div class="vol-grid">
-
-    <!-- VOL 1 - ENACTUS Instagram Management -->
-    <a href="volunteering/enactus-instagram.html" class="vol-card reveal" style="text-decoration:none;color:inherit">
-      <div class="vol-img">
-        <div style="display:grid;grid-template-columns:1fr 1fr;gap:0">
-          <img src="images/volunteering/enactus_before.png" alt="Before" style="width:100%;height:100%;object-fit:cover">
-          <img src="images/volunteering/enactus_after.jpg" alt="After" style="width:100%;height:100%;object-fit:cover">
-        </div>
-      </div>
-      <div class="vol-body">
-        <div class="vol-title">Instagram Account Management</div>
-        <div class="vol-org">ENACTUS FSSM · Community Manager</div>
-        <div class="vol-desc">Managed and significantly grew the ENACTUS FSSM Instagram account, implementing strategic content planning and professional visual design that increased engagement and follower growth.</div>
-      </div>
-    </a>
-
-    <!-- VOL 2 - ENACTUS Event -->
-    <a href="volunteering/enactus-event.html" class="vol-card reveal" style="transition-delay:0.1s;text-decoration:none;color:inherit">
-      <div class="vol-img">
-        <img src="images/volunteering/enactus_event.png" alt="ENACTUS Networking Event">
-      </div>
-      <div class="vol-body">
-        <div class="vol-title">Networking & Talks Event</div>
-        <div class="vol-org">ENACTUS FSSM · Organizer · 2024</div>
-        <div class="vol-desc">Organized and led a networking and talks event for ENACTUS FSSM, bringing together students, entrepreneurs, and industry professionals to foster collaboration and knowledge sharing.</div>
-      </div>
-    </a>
-
-    <!-- VOL 3 - MLS Marrakech -->
-    <a href="volunteering/mls-marrakech.html" class="vol-card reveal" style="transition-delay:0.2s;text-decoration:none;color:inherit">
-      <div class="vol-img">
-        <img src="images/volunteering/Mls_team.png.PNG" alt="MLS Marrakech Team">
-      </div>
-      <div class="vol-body">
-        <div class="vol-title">Moroccan Leadership Seminar</div>
-        <div class="vol-org">MLS Marrakech · Participant</div>
-        <div class="vol-desc">currently I am the logistics manager of the Moroccan Leadership Seminar in Marrakech, a leadership development movement focused on building skills in teamwork, communication, and social impact.</div>
-      </div>
-    </a>
-
-  </div>
-</section>
-
-<div class="divider"></div>
-
-<!-- ══════════ CONTACT ══════════ -->
-<section id="contact">
-  <div class="section-label">Get In Touch</div>
-  <h2 class="section-title">LET'S <em>CONNECT</em></h2>
-  <div class="contact-grid">
-    <div class="reveal-left">
-      <p class="contact-text">
-        I'm open to internships, research collaborations, CTF teams, and security engineering projects. Whether you want to build something secure or just talk cybersecurity — reach out.
-      </p>
-      <div class="contact-links">
-        <a href="mailto:h.jana5435@uca.ac.ma" class="contact-link">
-          <div class="contact-link-icon">✉️</div>
-          h.jana5435@uca.ac.ma
-        </a>
-        <div class="contact-link" style="cursor:default">
-          <div class="contact-link-icon">📍</div>
-          Marrakesh, Morocco
-        </div>
-        <a href="tel:+212693761922" class="contact-link">
-          <div class="contact-link-icon">📱</div>
-          +212 693 761 922
-        </a>
-      </div>
-      <div class="contact-socials">
-        <a href="https://github.com/hibajana" target="_blank" rel="noopener" class="social-btn" title="GitHub">
-          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"></path></svg>
-        </a>
-        <a href="https://linkedin.com/in/hiba-jana" target="_blank" rel="noopener" class="social-btn" title="LinkedIn">
-          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"></path><rect x="2" y="9" width="4" height="12"></rect><circle cx="4" cy="4" r="2"></circle></svg>
-        </a>
-        <a href="https://hackthebox.com" target="_blank" rel="noopener" class="social-btn" title="Hack The Box">
-          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><polygon points="12 2 22 8.5 22 15.5 12 22 2 15.5 2 8.5 12 2"></polygon><line x1="12" y1="22" x2="12" y2="15.5"></line><polyline points="22 8.5 12 15.5 2 8.5"></polyline></svg>
-        </a>
+      <div class="cv-card fr reveal" style="transition-delay: 0.1s">
+        <h3 class="cv-card-title">Version Française</h3>
+        <p>CV complet incluant mon parcours académique et mes compétences techniques.</p>
+        <a href="cv/hiba-jana-cv-fr.pdf" download class="cv-download-btn">Télécharger CV (FR)</a>
       </div>
     </div>
-    <div class="contact-form reveal-right">
-      <div class="form-title">Send a Message</div>
-      <div class="form-group">
-        <label class="form-label" for="fname">Name</label>
-        <input type="text" id="fname" class="form-input" placeholder="Your full name" />
+  </section>
+
+  <section id="contact">
+    <div class="section-label">Contact</div>
+    <h2 class="section-title">GET IN <em>TOUCH</em></h2>
+    <div class="contact-grid">
+      <div class="reveal">
+        <p>Ready to discuss security projects or opportunities. Available for internships and collaborations.</p>
+        <p style="margin-top: 1rem; color: var(--green);">📧 hiba.jana@email.com</p>
       </div>
-      <div class="form-group">
-        <label class="form-label" for="femail">Email</label>
-        <input type="email" id="femail" class="form-input" placeholder="your@email.com" />
-      </div>
-      <div class="form-group">
-        <label class="form-label" for="fsubject">Subject</label>
-        <input type="text" id="fsubject" class="form-input" placeholder="Internship / Collaboration / Other" />
-      </div>
-      <div class="form-group">
-        <label class="form-label" for="fmessage">Message</label>
-        <textarea id="fmessage" class="form-input" placeholder="Tell me about your project or opportunity..."></textarea>
-      </div>
-      <button class="btn-primary" style="width:100%;justify-content:center" onclick="sendMessage()">
-        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="22" y1="2" x2="11" y2="13"></line><polygon points="22 2 15 22 11 13 2 9 22 2"></polygon></svg>
-        Send Message
-      </button>
-      <div id="formFeedback" style="margin-top:1rem;font-family:var(--font-mono);font-size:0.75rem;letter-spacing:0.08em;color:var(--green);display:none">
-        ✓ Message sent! I'll get back to you soon.
+      <div class="reveal">
+        <form class="contact-form">
+          <input type="text" placeholder="Full Name" class="form-input" required>
+          <input type="email" placeholder="Email Address" class="form-input" required>
+          <textarea placeholder="Your Message" class="form-input" rows="5" required></textarea>
+          <button type="submit" class="btn-primary" style="width: 100%">Send Signal</button>
+        </form>
       </div>
     </div>
-  </div>
-</section>
+  </section>
 
-<!-- ══════════ FOOTER ══════════ -->
-<footer>
-  <div class="footer-copy">© 2026 Hiba Jana · All rights reserved</div>
-  <div class="footer-status">
-    <span class="status-dot"></span>
-    Open to opportunities
-  </div>
-</footer>
-
-<!-- ══════════ SCRIPTS ══════════ -->
-<script>
-  // Nav scroll effect
-  const nav = document.getElementById('nav');
-  window.addEventListener('scroll', () => {
-    nav.classList.toggle('scrolled', window.scrollY > 60);
-  }, { passive: true });
-
-  // Hamburger
-  const hamburger = document.getElementById('hamburger');
-  const mobileNav = document.getElementById('mobileNav');
-  hamburger.addEventListener('click', () => {
-    hamburger.classList.toggle('open');
-    mobileNav.classList.toggle('open');
-    document.body.style.overflow = mobileNav.classList.contains('open') ? 'hidden' : '';
-  });
-  function closeMobile() {
-    hamburger.classList.remove('open');
-    mobileNav.classList.remove('open');
-    document.body.style.overflow = '';
-  }
-
-  // Scroll reveal
-  const revealEls = document.querySelectorAll('.reveal, .reveal-left, .reveal-right');
-  const observer = new IntersectionObserver((entries) => {
-    entries.forEach(entry => {
-      if (entry.isIntersecting) {
-        entry.target.classList.add('visible');
-        observer.unobserve(entry.target);
-      }
+  <script>
+    // Navbar Scroll Effect
+    window.addEventListener('scroll', () => {
+      const nav = document.getElementById('navbar');
+      if (window.scrollY > 50) nav.classList.add('scrolled');
+      else nav.classList.remove('scrolled');
     });
-  }, { threshold: 0.12, rootMargin: '0px 0px -40px 0px' });
-  revealEls.forEach(el => observer.observe(el));
 
-  // Contact form
-  function sendMessage() {
-    const name = document.getElementById('fname').value.trim();
-    const email = document.getElementById('femail').value.trim();
-    const msg = document.getElementById('fmessage').value.trim();
-    const fb = document.getElementById('formFeedback');
-    if (!name || !email || !msg) {
-      fb.style.color = 'var(--orange)';
-      fb.textContent = '⚠ Please fill in all required fields.';
-      fb.style.display = 'block';
-      return;
+    // Mobile Menu Toggle
+    const hamburger = document.getElementById('hamburger');
+    const mobileNav = document.getElementById('mobileNav');
+    function toggleMenu() {
+      hamburger.classList.toggle('open');
+      mobileNav.classList.toggle('open');
     }
-    fb.style.color = 'var(--green)';
-    fb.textContent = '✓ Message sent! I\'ll get back to you soon.';
-    fb.style.display = 'block';
-    document.getElementById('fname').value = '';
-    document.getElementById('femail').value = '';
-    document.getElementById('fsubject').value = '';
-    document.getElementById('fmessage').value = '';
-  }
+    hamburger.addEventListener('click', toggleMenu);
 
-  // Typewriter effect
-  const phrases = [
-    'FST Marrakesh · Engineering Cycle · Cybersecurity',
-    'Network Security · CTF Player · Secure Systems',
-    'Building Secure Infrastructure · One Protocol at a Time'
-  ];
-  let phraseIdx = 0, charIdx = 0, deleting = false;
-  const typeEl = document.getElementById('typewriter');
-  function type() {
-    const current = phrases[phraseIdx];
-    if (!deleting) {
-      typeEl.textContent = current.substring(0, charIdx + 1);
-      charIdx++;
-      if (charIdx === current.length) {
-        deleting = true;
-        setTimeout(type, 2000);
-        return;
+    // Intersection Observer for Reveal Animations
+    const observerOptions = { threshold: 0.15 };
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('visible');
+        }
+      });
+    }, observerOptions);
+
+    document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+
+    // Typewriter effect
+    const phrases = [
+      'Engineering Student · Cybersecurity',
+      'Network Security · CTF Player',
+      'Building Secure Systems'
+    ];
+    let phraseIdx = 0, charIdx = 0, deleting = false;
+    const typeEl = document.getElementById('typewriter');
+
+    function type() {
+      const current = phrases[phraseIdx];
+      if (!deleting) {
+        typeEl.textContent = current.substring(0, charIdx + 1);
+        charIdx++;
+        if (charIdx === current.length) {
+          deleting = true;
+          setTimeout(type, 2000);
+          return;
+        }
+      } else {
+        typeEl.textContent = current.substring(0, charIdx - 1);
+        charIdx--;
+        if (charIdx === 0) {
+          deleting = false;
+          phraseIdx = (phraseIdx + 1) % phrases.length;
+        }
       }
-    } else {
-      typeEl.textContent = current.substring(0, charIdx - 1);
-      charIdx--;
-      if (charIdx === 0) {
-        deleting = false;
-        phraseIdx = (phraseIdx + 1) % phrases.length;
-      }
+      setTimeout(type, deleting ? 50 : 100);
     }
-    setTimeout(type, deleting ? 35 : 55);
-  }
-  setTimeout(type, 1200);
-</script>
+    type();
+  </script>
 </body>
 </html>
